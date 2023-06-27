@@ -35,7 +35,14 @@ struct MainView: View {
     }
     
     private func buttonAction() {
-        withAnimation {
+        withAnimation(
+            .interpolatingSpring(
+                mass: 1,
+                stiffness: 100,
+                damping: 10,
+                initialVelocity: 0
+            )
+        ) {
             awardIsShowing.toggle()
         }
     }
@@ -43,10 +50,10 @@ struct MainView: View {
 
 extension AnyTransition {
     static var customTransition: AnyTransition {
-        let insertion = AnyTransition.move(edge: .leading)
+        let insertion = AnyTransition.move(edge: .top)
             .combined(with: .scale)
-        let removal = AnyTransition.move(edge: .trailing)
-            .combined(with: .scale)
+        let removal = AnyTransition.move(edge: .bottom)
+            .combined(with: .opacity)
         return .asymmetric(insertion: insertion, removal: removal)
     }
 }

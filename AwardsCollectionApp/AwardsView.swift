@@ -12,13 +12,13 @@ struct AwardsView: View {
         NavigationStack {
             VStack {
                 ScrollView {
+                    SceneryView()
+                        .frame(width: 200, height: 200)
                     GradientRectangles()
                         .frame(width: 200, height: 200)
                     PathView()
                         .frame(width: 200, height: 200)
                     CurvesView()
-                        .frame(width: 200, height: 200)
-                    SceneryView()
                         .frame(width: 200, height: 200)
 
                 }
